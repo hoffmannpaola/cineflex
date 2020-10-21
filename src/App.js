@@ -22,11 +22,11 @@ export default function App() {
       <Header />
       <Switch> 
         <MovieProvider> 
-          
+        <Route path="/" exact component={Main}/>
           <Route path="/sessoes"  component={Sessoes}/>
           <Route path="/assentos" component={Assentos}/>
           <Route path="/sucesso" component={Sucesso}/>
-          <Route path="/" component={Main}/>
+          
         </MovieProvider> 
       </Switch>
     </Router>

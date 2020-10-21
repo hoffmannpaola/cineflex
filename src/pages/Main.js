@@ -1,24 +1,29 @@
 import React, { useContext } from 'react';
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import MoviesContext from '../contexts/MoviesContext';
-import Movies from '../components/Movies'
+
 
 export default function Main() {
-    const [movies, setMovies] = useContext(MoviesContext);
+    const { movies, setClickedMovie } = useContext(MoviesContext);
    
+
+    
   
     return (
       <StyleMain> 
         <h1>Selecione o filme</h1>
         <ul>
-            {movies.map(movie  => <Movies movie={movie} key={movie.id} />)}
+          {movies.map(movie  => 
+            <StyleBox key={movie.id} onClick={ () => setClickedMovie(movie)}>
+                <Link to="/sessoes">
+                  <img src={movie.posterURL}/> 
+                </Link>
+            </StyleBox>)}
         </ul>
-       
-        
       </StyleMain>
-    )
-  }
-
+    );
+}
 
   const StyleMain = styled.div ` 
     margin-top: 15%;
@@ -33,7 +38,6 @@ export default function Main() {
 
     h1 {
         margin-top: 50px;
-        font-family: "Roboto", sans-serif;
         font-size: 1rem;
         margin-bottom: 15px;
         
@@ -45,4 +49,19 @@ export default function Main() {
         flex-wrap: wrap;
         margin: auto;
     }
+`;
+
+const StyleBox = styled.li ` 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+   
+
+    img {
+        width: 140px;
+        margin-top: 10px;
+    }
+    
 `;
