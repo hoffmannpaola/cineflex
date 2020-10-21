@@ -12,6 +12,7 @@ export function MovieProvider(props) {
     
     const [movies, setMovies] = useState([]);
     const [clickedMovie, setClickedMovie]=useState({})
+    const [availableSeats, setAvailableSeats]=useState({})
 
     useEffect(() => {
         const requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v1/cineflex/movies");
@@ -25,7 +26,7 @@ export function MovieProvider(props) {
    
 
     return (
-        <MoviesContext.Provider value={ {movies, setMovies, clickedMovie, setClickedMovie} } >
+        <MoviesContext.Provider value={ {movies, setMovies, clickedMovie, setClickedMovie, availableSeats, setAvailableSeats} } >
             {props.children}
         </MoviesContext.Provider>
     )

@@ -6,62 +6,108 @@ import MoviesContext from '../contexts/MoviesContext';
 
 export default function Sessoes() {
   
-  const { clickedMovie } = useContext(MoviesContext);
+  const { clickedMovie, setAvailableSeats } = useContext(MoviesContext);
   const {days, id, overview, posterURL, releaseDate, title} = clickedMovie;
-  console.log(days)
- 
 
-  // {movies.map(movie  => 
-  //   <StyleBox key={movie.id} onClick={ () => setClickedMovie(movie)}>
-  //       <Link to="/sessoes">
-  //         <img src={movie.posterURL}/> 
-  //       </Link>
-  //   </StyleBox>)}
-
-
-
-
-
-
-
-
-
-    return (
-        <> 
-        <StyleSection>
-          <h1>Selecione o Horário</h1>
-          {days.map(day => (
-              <ul key={day.id}>
-                  <li>{day.weekday} - {day.date} </li>
-                  
-                  {day.showtimes.map(item  => (
-                    <ul key={item.id}>
-                      <li>{item.name}</li>
-                    </ul> ) ) }
-              </ul>
-            ) 
-          )}
-          <li> {title} </li>
-          <img src={posterURL}/>         
+  return (
+      <> 
+      <StyleSection>
+        <h1>Selecione o Horário</h1>
+        {days.map(day => (
+            <BoxSection key={day.id}>
+                {day.weekday} - {day.date}
+                <BoxTime>
+                {day.showtimes.map(item  => (
+                  <li key={item.id} onClick={ () => setAvailableSeats(item.seats)} >
+                      <Link to="/assentos">
+                          <Time> {item.name} </Time>
+                      </Link>
+                  </li>) ) }
+                </BoxTime> 
+            </BoxSection>
+          ) 
+        )}
         </StyleSection>
-            
-        </>
-    )
+        <Footer>
+          <img src={posterURL}/>  
+          {title} 
+          
+        </Footer>       
+      
+          
+      </>
+  )
   };
 
 
   const StyleSection = styled.div ` 
     margin-top: 30%;
-    margin-bottom: 5%;
+    margin-bottom: 35%;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 
 
     h1 {
       margin-bottom: 10%;
+      font-size: 1.1rem;
+      text-align: center;
     }
+
+    
+   `;
+
+   const BoxSection = styled.ul ` 
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+
+    
+   
+   `;
+
+   const BoxTime = styled.div ` 
+    display: flex;
+    justify-content: flex-start;
+ 
+   
+   `;
+
+   const Time = styled.div `
+      width: 50px;
+      height: 30px;
+      background: orange;
+      margin-top: 30px;
+      margin-right: 30px;
+      border-radius: 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      
+    
+   `;
+
+   const Footer = styled.div `
+    width: 100%;
+    height: 110px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    background-color: #C3CFD9;
+
+    img {
+      width: 60px;
+      border: 5px solid white;
+      margin-right: 10px;
+      margin-left: 5px;
+    }
+
+    
    `;
