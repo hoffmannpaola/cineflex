@@ -6,7 +6,7 @@ import MoviesContext from '../contexts/MoviesContext';
 
 export default function Sessoes() {
   
-  const { clickedMovie, setAvailableSeats } = useContext(MoviesContext);
+  const { clickedMovie, setAvailableSeats, setSection, saveInfo } = useContext(MoviesContext);
   const {days, id, overview, posterURL, releaseDate, title} = clickedMovie;
 
   return (
@@ -14,8 +14,8 @@ export default function Sessoes() {
       <StyleSection>
         <h1>Selecione o Horário</h1>
         {days.map(day => (
-            <BoxSection key={day.id}>
-                {day.weekday} - {day.date}
+            <BoxSection key={day.id} >
+                {day.weekday}  - {day.date}
                 <BoxTime>
                 {day.showtimes.map(item  => (
                   <li key={item.id} onClick={ () => setAvailableSeats(item.seats)} >
