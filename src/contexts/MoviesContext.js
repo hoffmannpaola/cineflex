@@ -2,11 +2,13 @@ import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
 
 
-const UserContext = createContext();
+const MoviesContext = createContext();
 
-export default UserContext;
+export default MoviesContext;
 
-export function UserProvider(props) {
+
+
+export function MovieProvider(props) {
     
     const [movies, setMovies] = useState([]);
 
@@ -20,11 +22,12 @@ export function UserProvider(props) {
     }, []);
 
    
+    
 
     return (
-        <UserContext.Provider value={{movies}} >
+        <MoviesContext.Provider value={[movies, setMovies]} >
             {props.children}
-        </UserContext.Provider>
+        </MoviesContext.Provider>
     )
 }
 

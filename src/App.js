@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserProvider } from './contexts/UserContext';
+import { MovieProvider } from './contexts/MoviesContext';
 
 import {
     BrowserRouter as Router,
@@ -21,12 +21,13 @@ export default function App() {
     <Router> 
       <Header />
       <Switch> 
-        <UserProvider> 
-          <Route path="/" exact  component={Main}/>
+        <MovieProvider> 
+          
           <Route path="/sessoes"  component={Sessoes}/>
           <Route path="/assentos" component={Assentos}/>
           <Route path="/sucesso" component={Sucesso}/>
-        </UserProvider> 
+          <Route path="/" component={Main}/>
+        </MovieProvider> 
       </Switch>
     </Router>
   </div>

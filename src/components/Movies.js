@@ -5,15 +5,16 @@ import styled from 'styled-components';
 
 
 
+
 export default function Movies(props) {
   
     const { movie } = props;
-    const { days, id, overview, posterURL, releaseDate, title } = movie;
-
+    const { id, posterURL } = movie;
+    
     return (
         <>  
             <StyleBox>
-                <Link to={`/sessoes`}> 
+                <Link to="/sessoes"> 
                      <img src={posterURL}/>    
                 </Link>
             </StyleBox>

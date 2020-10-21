@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import UserContext from '../contexts/UserContext'
+import MoviesContext from '../contexts/MoviesContext';
 import Movies from '../components/Movies'
 
 export default function Main() {
-    const { movies } = useContext(UserContext);
+    const [movies, setMovies] = useContext(MoviesContext);
    
   
     return (
