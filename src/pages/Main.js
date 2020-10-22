@@ -38,7 +38,7 @@ export default function Main() {
 
     h1 {
         margin-top: 50px;
-        font-size: 1rem;
+        font-size: 1.3rem;
         margin-bottom: 15px;
         
 
@@ -60,8 +60,9 @@ const StyleBox = styled.li `
    
 
     img {
-        width: 140px;
+        width: 150px;
         margin-top: 10px;
+        border-radius: 10%;
     }
     
 `;

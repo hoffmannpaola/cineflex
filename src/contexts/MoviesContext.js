@@ -23,10 +23,9 @@ export function MovieProvider(props) {
     function selectingSeats (seat){
         // console.log(seat)
         if(seat.isAvailable === false) {
-            alert("Assento não disponível!")
+            alert("Assento indisponível!")
         }
         if(seat.isAvailable === true) {
-            //mudar cor da bolinha e renderizar na tela
 
             const isOrNot = clickedSeats.some( seatInArray => seatInArray.id === seat.id);
             
@@ -37,15 +36,25 @@ export function MovieProvider(props) {
             }
             
         }
-        //se esta na lista de assentos selecionados
-        // fica verde
-        
+       
         
     }
-    
 
     
-
+    function reserveSeat () {
+        const listIds = [];
+        clickedSeats.map(seat => listIds.push(seat.id))
+        
+            
+        var request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/cineflex/seats/book_many', {"ids": listIds });
+        request.then(success);
+    
+    }
+    
+    function success () {
+        alert("requisiçao voltou com sucesso!")
+    }
+    
 
 
     useEffect(() => {
@@ -61,7 +70,7 @@ export function MovieProvider(props) {
    
 
     return (
-        <MoviesContext.Provider value={ {movies, setMovies, clickedMovie, setClickedMovie, availableSeats, setAvailableSeats, clickedSeats, setClickedSeats, section, setSection, selectingSeats, weekday, setWeekday, time, setTime} } >
+        <MoviesContext.Provider value={ {movies, setMovies, clickedMovie, setClickedMovie, availableSeats, setAvailableSeats, clickedSeats, setClickedSeats, section, setSection, selectingSeats, weekday, setWeekday, time, setTime, reserveSeat} } >
             {props.children}
         </MoviesContext.Provider>
     )

@@ -5,12 +5,14 @@ import MoviesContext from '../contexts/MoviesContext';
 
 
 export default function Assentos() {
-  const { clickedMovie, availableSeats, selectingSeats, weekday, time, clickedSeats} = useContext(MoviesContext);
+  const { clickedMovie, availableSeats, selectingSeats, weekday, time, clickedSeats, reserveSeat} = useContext(MoviesContext);
   const { posterURL, title} = clickedMovie;
   
-  console.log(clickedSeats);
+  // console.log(clickedSeats);
   // console.log(section);
   //console.log(clickedMovie);
+  // console.log(weekday);
+  // console.log(time);
   
 
     return (
@@ -37,9 +39,11 @@ export default function Assentos() {
             <li> <ColorLegend color="#C3CFD9"></ColorLegend> <span>Disponível </span> </li>
             <li> <ColorLegend color="#FBE192"></ColorLegend> <span>Indisponível </span> </li>
         </StyleLegend>
-        <Button>
-          <div>Reservar Assentos(s)</div>
-        </Button>
+        <Link to="/sucesso">
+          <Button  onClick={ () => reserveSeat()}>
+            <div>Reservar Assentos(s)</div>
+          </Button>
+        </Link>
         <Footer>
           <img src={posterURL}/>  
           <div>
@@ -62,10 +66,14 @@ export default function Assentos() {
   const StyleContainer = styled.div ` 
     margin-top: 15%;
     margin: 5%;
+    padding-bottom: 5%;
     width: 90%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    // box-shadow: 0 0 0.3em grey;
+    border-radius: 5%;
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.05);
 
   `;
 
@@ -108,6 +116,7 @@ export default function Assentos() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 
     li {
       margin-top: 1px;
@@ -119,8 +128,8 @@ export default function Assentos() {
 
 const Seat = styled.div `
 
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
     border-radius: 50%;
     margin-top: 10px;
     margin-left: 7px;
@@ -175,13 +184,10 @@ const Footer = styled.div `
       justify-content: center;
       align-items: center;
       background-color: orange;
-      width: 60%;
+      width: 50%;
       height: 30px;
       color: white;
-      
-   
+
     }
-    
-   
-   
+
    `;
