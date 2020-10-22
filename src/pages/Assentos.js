@@ -5,20 +5,14 @@ import MoviesContext from '../contexts/MoviesContext';
 
 
 export default function Assentos() {
-  const { clickedMovie, availableSeats, selectingSeats, weekday, time} = useContext(MoviesContext);
+  const { clickedMovie, availableSeats, selectingSeats, weekday, time, clickedSeats} = useContext(MoviesContext);
   const { posterURL, title} = clickedMovie;
-  console.log(availableSeats);
-  // console.log(clickedSeats);
+  
+  console.log(clickedSeats);
   // console.log(section);
   //console.log(clickedMovie);
-  console.log(weekday);
-  console.log(time);
-
-
-
-     //se esta na lista de assentos selecionados
-        // fica verde
   
+
     return (
       <>
         <Title>Selecione o(s) Assentos(s)</Title>
@@ -26,8 +20,13 @@ export default function Assentos() {
         
           {availableSeats.map(seat =>
             <StyleBox key={seat.id}>
+                  
+                 
                   {seat.isAvailable 
-                    ?  (<><Seat  color="#C3CFD9" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></>  )  
+                    ?  (clickedSeats.some( seatInArray => seatInArray.id === seat.id) 
+                        ? <><Seat  color="#8DD7CF" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></> 
+                        : <><Seat  color="#C3CFD9" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></>)
+                    
                     :  (<><Seat  color="#FBE192" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></>  ) }
                   
                  
