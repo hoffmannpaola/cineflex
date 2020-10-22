@@ -6,22 +6,25 @@ import MoviesContext from '../contexts/MoviesContext';
 
 export default function Sessoes() {
   
-  const { clickedMovie, setAvailableSeats, setSection, saveInfo } = useContext(MoviesContext);
-  const {days, id, overview, posterURL, releaseDate, title} = clickedMovie;
+  const { clickedMovie, setAvailableSeats, time, setTime, weekday, setWeekday} = useContext(MoviesContext);
+  const {days, posterURL, title} = clickedMovie;
 
   return (
       <> 
-      <StyleSection>
+      <StyleSection >
         <h1>Selecione o Horário</h1>
+
         {days.map(day => (
-            <BoxSection key={day.id} >
+            <BoxSection key={day.id} onClick={ () => setWeekday([...weekday, day.weekday])} >
                 {day.weekday}  - {day.date}
-                <BoxTime>
+                <BoxTime >
                 {day.showtimes.map(item  => (
-                  <li key={item.id} onClick={ () => setAvailableSeats(item.seats)} >
+                   <li key={item.id} onClick={ () => setAvailableSeats(item.seats)} >
+                     <div onClick={ () => setTime( [...time, item.name]) }> 
                       <Link to="/assentos">
-                          <Time> {item.name} </Time>
+                            <Time> {item.name} </Time>
                       </Link>
+                      </div>
                   </li>) ) }
                 </BoxTime> 
             </BoxSection>
@@ -32,6 +35,7 @@ export default function Sessoes() {
           <img src={posterURL}/>  
           {title} 
           
+          
         </Footer>       
       
           
@@ -39,6 +43,7 @@ export default function Sessoes() {
   )
   };
 
+  
 
   const StyleSection = styled.div ` 
     margin-top: 30%;

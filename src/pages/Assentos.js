@@ -5,12 +5,19 @@ import MoviesContext from '../contexts/MoviesContext';
 
 
 export default function Assentos() {
-  const { clickedMovie, availableSeats, clickedSeats, section, setClickedSeats } = useContext(MoviesContext);
-  const {posterURL, title} = clickedMovie;
-  // console.log(availableSeats);
+  const { clickedMovie, availableSeats, selectingSeats, weekday, time} = useContext(MoviesContext);
+  const { posterURL, title} = clickedMovie;
+  console.log(availableSeats);
   // console.log(clickedSeats);
   // console.log(section);
+  //console.log(clickedMovie);
+  console.log(weekday);
+  console.log(time);
 
+
+
+     //se esta na lista de assentos selecionados
+        // fica verde
   
     return (
       <>
@@ -18,17 +25,18 @@ export default function Assentos() {
         <StyleContainer>
         
           {availableSeats.map(seat =>
-            <StyleBox key={seat.id} onClick={ () => setClickedSeats([...clickedSeats, seat])}>
-                <div></div>
-                <li>{seat.name}</li>
-            
+            <StyleBox key={seat.id}>
+                  {seat.isAvailable 
+                    ?  (<><Seat  color="#C3CFD9" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></>  )  
+                    :  (<><Seat  color="#FBE192" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></>  ) }
                   
+                 
             </StyleBox>)}
         </StyleContainer>
         <StyleLegend>
-            <li> <div></div> <span> Selecionado </span> </li>
-            <li> <div></div> <span>Disponível </span> </li>
-            <li> <div></div> <span>Indisponível </span> </li>
+            <li> <ColorLegend color="#8DD7CF"></ColorLegend> <span> Selecionado </span> </li>
+            <li> <ColorLegend color="#C3CFD9"></ColorLegend> <span>Disponível </span> </li>
+            <li> <ColorLegend color="#FBE192"></ColorLegend> <span>Indisponível </span> </li>
         </StyleLegend>
         <Button>
           <div>Reservar Assentos(s)</div>
@@ -36,8 +44,8 @@ export default function Assentos() {
         <Footer>
           <img src={posterURL}/>  
           <div>
-            {title}
-            
+            <li>{title} </li>
+            <li> <span> {weekday} - {time} </span> </li>
           </div>
         </Footer>  
           
@@ -69,18 +77,6 @@ export default function Assentos() {
     align-items: center;
     margin-bottom: 10%;
 
-  
-    div {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background-color: grey;
-      margin-top: 10px;
-      margin-left: 7px;
-      margin-right: 7px;
-
-    }
-
     li {
       width: 100%;
       display: flex;
@@ -95,25 +91,24 @@ export default function Assentos() {
     
   `;
 
+    const ColorLegend = styled.div `
+ 
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: ${(props) => props.color};
+      margin-top: 10px;
+      margin-left: 7px;
+      margin-right: 7px;
+
+    
+    `;
   
   const StyleBox = styled.div ` 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-
-   
-    div {
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background-color: grey;
-      margin-top: 10px;
-      margin-left: 7px;
-      margin-right: 7px;
-
-    }
 
     li {
       margin-top: 1px;
@@ -121,6 +116,20 @@ export default function Assentos() {
     }
     
 `;
+
+
+const Seat = styled.div `
+
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-left: 7px;
+    margin-right: 5px;
+    background-color: ${(props) => props.color};
+
+`;
+
 
 const Footer = styled.div `
     width: 100%;
@@ -133,6 +142,16 @@ const Footer = styled.div `
     align-items: center;
     margin: auto;
     background-color: #C3CFD9;
+
+    div {
+      margin-top: 7px;
+      display: flex;
+      flex-direction: column;
+      
+      span {
+        font-weight: bolder;
+      }
+    }
 
     img {
       width: 60px;
