@@ -45,16 +45,10 @@ export function MovieProvider(props) {
         const listIds = [];
         clickedSeats.map(seat => listIds.push(seat.id))
         
-            
-        var request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/cineflex/seats/book_many', {"ids": listIds });
-        request.then(success);
+        axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/cineflex/seats/book_many', {"ids": listIds });
     
     }
-    
-    function success () {
-        alert("requisiçao voltou com sucesso!")
-    }
-    
+  
 
 
     useEffect(() => {

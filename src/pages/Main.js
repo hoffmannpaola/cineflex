@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import MoviesContext from '../contexts/MoviesContext';
 
 
 export default function Main() {
-    const { movies, setClickedMovie } = useContext(MoviesContext);
-   
+  
+  const { movies, setClickedMovie } = useContext(MoviesContext);
 
-    
   
     return (
       <StyleMain> 

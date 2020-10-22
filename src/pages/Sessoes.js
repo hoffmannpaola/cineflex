@@ -15,7 +15,7 @@ export default function Sessoes() {
         <h1>Selecione o Horário</h1>
 
         {days.map(day => (
-            <BoxSection key={day.id} onClick={ () => setWeekday([...weekday, day.weekday])} >
+            <BoxSection key={day.id} onClick={ () => setWeekday([...weekday, day.weekday, day.date])} >
                 {day.weekday}  - {day.date}
                 <BoxTime >
                 {day.showtimes.map(item  => (

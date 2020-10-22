@@ -11,7 +11,7 @@ export default function Assentos() {
   // console.log(clickedSeats);
   // console.log(section);
   //console.log(clickedMovie);
-  // console.log(weekday);
+console.log(weekday);
   // console.log(time);
   
 
@@ -48,7 +48,7 @@ export default function Assentos() {
           <img src={posterURL}/>  
           <div>
             <li>{title} </li>
-            <li> <span> {weekday} - {time} </span> </li>
+            <li> <span> {weekday[0]} - {time} </span> </li>
           </div>
         </Footer>  
           
