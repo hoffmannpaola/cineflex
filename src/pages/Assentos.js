@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import MoviesContext from '../contexts/MoviesContext';
 import { BsFillCaretLeftFill } from "react-icons/bs";
+import { MdEventSeat } from "react-icons/md";
 
 export default function Assentos() {
   const { clickedMovie, availableSeats, selectingSeats, weekday, time, clickedSeats, reserveSeat, resetSeats } = useContext(MoviesContext);
@@ -18,25 +19,25 @@ export default function Assentos() {
 
                   {seat.isAvailable 
                     ?  (clickedSeats.some( seatInArray => seatInArray.id === seat.id) 
-                        ? <><Seat  color="#8DD7CF" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></> 
-                        : <><Seat  color="#C3CFD9" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></>)
+                        ? <><Seat  color="#8DD7CF" onClick={ () => selectingSeats(seat)}><MdEventSeat /></Seat ><li>{seat.name}</li></> 
+                        : <><Seat  color="#C3CFD9" onClick={ () => selectingSeats(seat)}><MdEventSeat /></Seat ><li>{seat.name}</li></>)
                     
-                    :  (<><Seat  color="#FBE192" onClick={ () => selectingSeats(seat)}></Seat ><li>{seat.name}</li></>  ) }
+                    :  (<><Seat  color="#FBE192" onClick={ () => selectingSeats(seat)}><MdEventSeat /></Seat ><li>{seat.name}</li></>  ) }
                      
             </StyleBox>)}
         </StyleContainer>
 
         <StyleLegend>
           <li> 
-            <ColorLegend color="#8DD7CF"></ColorLegend> 
+            <ColorLegend color="#8DD7CF"><MdEventSeat /></ColorLegend> 
             <span> Selecionado </span> 
           </li>
           <li> 
-            <ColorLegend color="#C3CFD9"></ColorLegend> 
+            <ColorLegend color="#C3CFD9"><MdEventSeat /></ColorLegend> 
             <span>Disponível </span> 
           </li>
           <li> 
-            <ColorLegend color="#FBE192"></ColorLegend> 
+            <ColorLegend color="#FBE192"><MdEventSeat /></ColorLegend> 
             <span>Indisponível </span> 
           </li>
         </StyleLegend>
@@ -110,10 +111,9 @@ const StyleLegend= styled.div `
 `;
 
 const ColorLegend = styled.div `
-  width: 18px;
-  height: 18px;
+  font-size: 1.7rem;
   border-radius: 50%;
-  background-color: ${(props) => props.color};
+  color: ${(props) => props.color};
   margin-top: 10px;
   margin-left: 7px;
   margin-right: 7px;
@@ -133,13 +133,11 @@ const StyleBox = styled.div `
 
 
 const Seat = styled.div `
-  width: 19px;
-  height: 19px;
-  border-radius: 50%;
+  font-size: 1.5rem;
   margin-top: 10px;
   margin-left: 7px;
   margin-right: 5px;
-  background-color: ${(props) => props.color};
+  color: ${(props) => props.color};
 `;
 
 const Button = styled.div `
