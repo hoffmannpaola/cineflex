@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-
 export default function Header() {
 	return (
         <StyleHeader>
@@ -22,13 +21,12 @@ const StyleHeader = styled.div `
     align-items: center;
     margin: auto;
     background-color: #C3CFD9;
-    
 
-    span {
-        color: #E68641;
-        font-family: "Roboto", sans-serif;
-        font-size: 2rem;
-        font-weight: 400;
+        span {
+            color: #E68641;
+            font-family: "Roboto", sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
 
-    }
+        }
 `;
