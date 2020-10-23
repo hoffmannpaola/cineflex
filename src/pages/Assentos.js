@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import MoviesContext from '../contexts/MoviesContext';
+import { BsFillCaretLeftFill } from "react-icons/bs";
 
 export default function Assentos() {
-  const { clickedMovie, availableSeats, selectingSeats, weekday, time, clickedSeats, reserveSeat } = useContext(MoviesContext);
+  const { clickedMovie, availableSeats, selectingSeats, weekday, time, clickedSeats, reserveSeat, resetSeats } = useContext(MoviesContext);
   const { posterURL, title } = clickedMovie;
 
     return (
@@ -44,6 +45,14 @@ export default function Assentos() {
           <Button  onClick={ () => reserveSeat() }>
             <div> Reservar Assentos(s) </div>
           </Button>
+        </Link>
+
+        <Link to="/sessoes" >             
+          <PreviousPage>
+            <div onClick={ () => resetSeats()}>
+              <BsFillCaretLeftFill /> 
+            </div>
+          </PreviousPage>
         </Link>
 
         <Footer>
@@ -133,6 +142,42 @@ const Seat = styled.div `
   background-color: ${(props) => props.color};
 `;
 
+const Button = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10%;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: orange;
+      width: 50%;
+      height: 30px;
+      color: white;
+    }
+`;
+
+const PreviousPage = styled.div `
+  width: 100%;
+  height: 30px;
+  font-size: 2rem;
+  margin-bottom: 40%;
+  color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+    div {
+      width: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.05);
+      border-radius: 5px;
+      }
+`;
 
 const Footer = styled.div `
   width: 100%;
@@ -162,21 +207,4 @@ const Footer = styled.div `
       margin-right: 10px;
       margin-left: 5px;
     }
-  `;
-
-  const Button = styled.div `
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 130px;
-
-      div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: orange;
-        width: 50%;
-        height: 30px;
-        color: white;
-      }
-  `;
+`;

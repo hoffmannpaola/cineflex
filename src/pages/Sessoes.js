@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import MoviesContext from '../contexts/MoviesContext';
+import { BsFillCaretLeftFill } from "react-icons/bs";
+
 
 export default function Sessoes() {
   
-  const { clickedMovie, setAvailableSeats, time, setTime, weekday, setWeekday} = useContext(MoviesContext);
+  const { clickedMovie, setAvailableSeats, setTime, setWeekday} = useContext(MoviesContext);
   const {days, posterURL, title} = clickedMovie;
 
   return (
@@ -34,6 +36,14 @@ export default function Sessoes() {
         ))}
 
       </StyleSection>
+      
+      <a onClick={() => {window.location.href="/"}} >            
+        <PreviousPage>
+          <div>
+            <BsFillCaretLeftFill /> 
+          </div>
+        </PreviousPage>
+      </a>
 
       <Footer>
         <img src={posterURL} />  
@@ -45,7 +55,7 @@ export default function Sessoes() {
 
 const StyleSection = styled.div ` 
   margin-top: 30%;
-  margin-bottom: 35%;
+  margin-bottom: 10%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -80,6 +90,26 @@ const Time = styled.div `
   justify-content: center;
   align-items: center;
 
+`;
+
+const PreviousPage = styled.div `
+  width: 100%;
+  height: 30px;
+  font-size: 2rem;
+  margin-bottom: 40%;
+  color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+    div {
+      width: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.05);
+      border-radius: 5px;
+      }
 `;
 
 const Footer = styled.div `

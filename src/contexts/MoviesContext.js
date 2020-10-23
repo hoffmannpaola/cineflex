@@ -40,6 +40,10 @@ export function MovieProvider(props) {
         }
     }
 
+    function resetSeats (){
+        setClickedSeats([]);
+    }
+
     function reserveSeat () {
         let listIds = clickedSeats.map(seat => seat.id);
         
@@ -47,7 +51,7 @@ export function MovieProvider(props) {
     }
   
     return (
-        <MoviesContext.Provider value={ {movies, setMovies, clickedMovie, setClickedMovie, availableSeats, setAvailableSeats, clickedSeats, setClickedSeats, section, setSection, selectingSeats, weekday, setWeekday, time, setTime, reserveSeat} }>
+        <MoviesContext.Provider value={ {movies, setMovies, clickedMovie, setClickedMovie, availableSeats, setAvailableSeats, clickedSeats, setClickedSeats, section, setSection, selectingSeats, weekday, setWeekday, time, setTime, reserveSeat, resetSeats} }>
             {props.children}
         </MoviesContext.Provider>
     )
