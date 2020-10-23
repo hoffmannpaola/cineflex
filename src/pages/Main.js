@@ -24,7 +24,7 @@ export default function Main() {
 }
 
 const StyleMain = styled.div ` 
-  margin-top: 15%;
+  margin-top: 60px;
   margin-bottom: 5%;
   width: 100%;
   display: flex;
@@ -34,7 +34,7 @@ const StyleMain = styled.div `
   align-items: center;
   
     h1 {
-        margin-top: 50px;
+        margin-top: 30px;
         font-size: 1.3rem;
         margin-bottom: 15px;
     }

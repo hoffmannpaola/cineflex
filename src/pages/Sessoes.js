@@ -54,7 +54,7 @@ export default function Sessoes() {
 };
 
 const StyleSection = styled.div ` 
-  margin-top: 30%;
+  margin-top: 60px;
   margin-bottom: 10%;
   width: 100%;
   display: flex;
@@ -62,7 +62,7 @@ const StyleSection = styled.div `
   flex-direction: column;
 
     h1 {
-      margin-bottom: 10%;
+      margin-top: 30px;
       font-size: 1.1rem;
       text-align: center;
     }

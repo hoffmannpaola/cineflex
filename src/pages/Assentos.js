@@ -74,7 +74,7 @@ export default function Assentos() {
   }
 
 const Title = styled.h1 `
-  margin-top: 30%;
+  margin-top: 80px;
   font-size: 1.1rem;
   text-align: center;
 `;
@@ -98,6 +98,7 @@ const StyleLegend= styled.div `
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10%;
+  margin-left: 4%;
 
     li {
       width: 100%;
@@ -131,7 +132,6 @@ const StyleBox = styled.div `
     }
 `;
 
-
 const Seat = styled.div `
   font-size: 1.5rem;
   margin-top: 10px;
@@ -151,9 +151,11 @@ const Button = styled.div `
       justify-content: center;
       align-items: center;
       background-color: orange;
+      padding: 5px;
       width: 50%;
       height: 30px;
       color: white;
+      border-radius: 5px 5px 5px 5px;
     }
 `;
 
@@ -196,6 +198,10 @@ const Footer = styled.div `
       
         span {
           font-weight: bolder;
+        }
+
+        li {
+          margin-top: 7px;
         }
     }
 

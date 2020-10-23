@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import MoviesContext from '../contexts/MoviesContext';
+import { MdEventSeat } from "react-icons/md";
 
 export default function Sucesso() {
   
@@ -9,31 +10,44 @@ export default function Sucesso() {
 
   return (
     <>
-      <Title>
-        Pedido feito <br /> com sucesso!
-      </Title>
+      <Container>
+        <Title>
+          Pedido feito com sucesso!
+        </Title>
 
-      <Info>
-        <h1> {title} </h1>
-        <h1> {weekday[1]}- {time} </h1>
-      </Info>
+        <Info>
+          <h1> {title} </h1>
+          <h1> {weekday[1]} - {time} </h1>
+        </Info>
 
-      <Seat>
-        {clickedSeats.map(seat =>
-          <div key={seat.id}> 
-            <h3>Assento {seat.name} </h3>
-          </div>
-        )}
-      </Seat>
+        <Seat>
+          {clickedSeats.map(seat =>
+            <div key={seat.id}> 
+              <li> 
+                <MdEventSeat color="#8DD7CF" fontSize="1.5rem"/>
+                <span> Assento {seat.name}  </span>
+              </li>
+            </div>
+          )}
+        </Seat>
 
-      <a onClick={() => {window.location.href="/"}} >
-        <Button>
-          <div> Home </div>
-        </Button>
-      </a>
+        <a onClick={() => {window.location.href="/"}} >
+          <Button>
+            <div> Home </div>
+          </Button>
+        </a>
+      </Container>
     </>
   )
 }
+
+const Container = styled.div `
+  width: 100%;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 const Title = styled.h1 `
   margin-top: 30%;
@@ -48,8 +62,10 @@ const Info = styled.div `
   font-family: "Roboto", sans-serif;
 
     h1 {
+      margin-top: 5%;
       font-size: 1.1rem;
       font-weight: bolder;
+      text-align: center;
     }
 `;
 
@@ -61,9 +77,14 @@ const Seat = styled.div `
   flex-direction: column;
   align-items: space-between;
 
-    h3 {
-      margin-top: 3%;
-    }
+  li {
+    width: 38%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+      
+  }
 `;
 
 const Button = styled.div `
@@ -76,8 +97,9 @@ const Button = styled.div `
       justify-content: center;
       align-items: center;
       background-color: orange;
-      width: 50%;
+      width: 40%;
       height: 30px;
       color: white;
+      border-radius: 5px 5px 5px 5px;
     }
 `;
